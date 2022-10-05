@@ -1,5 +1,8 @@
 package com.project.Mondo.Repository;
 
-public class AuthoritiesRepository {
-    
+
+import org.springframework.data.repository.CrudRepository;
+import com.project.Mondo.Model.Authority;
+
+public interface AuthoritiesRepository extends CrudRepository<Authority, Long> {
 }
