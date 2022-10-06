@@ -48,7 +48,7 @@ public class MoviesController {
         return movie.getVideos().get(0).getKey();
     }
 
-    @GetMapping("/")
+    @GetMapping("/")  // is this the route with GET method which is called when the URL path is "/"
     // @ResponseBody
     public String getMovie(Model model) {
         // TmdbMovies movies = new TmdbApi("d84f9365179dc98dc69ab22833381835").getMovies();
@@ -80,7 +80,8 @@ public class MoviesController {
         // // System.out.println(firstList);
         // // System.out.println(secondList);
         // System.out.println(nested);
-        return "movies/homepage";
+        return "movies/homepage"; // this displays the static html file called homepage when directed to the GetMapping Route
+                                // homepage html is styled with homepage and styles css.
     }
 
     @GetMapping("/test")
