@@ -22,10 +22,10 @@ body {
     width: 83%;
   }
   
-  .imdb-logo {
-    width: 5%;
-    height: 115%;
-    padding-right: 15px;
+  .mondo-logo {
+    width: auto;
+    height: 70%;
+    padding-right: 10px;
   }
   
   .header-button {
