@@ -177,5 +177,4 @@ public class MoviesController {
     // Add route for GetMapping /nowplayingMovies
     // Add route for GetMapping /upcomingMovies
     // Add route for GetMapping /newReleases
-    
 }
