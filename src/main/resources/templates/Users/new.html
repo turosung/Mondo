@@ -23,7 +23,7 @@
             <!-- <h1>MONDO</h1> -->
           </div>
           <!-- DISPLAY WHEN YOU ARE NOT SIGNED UP OR IN DATABASE AND CAN'T LOGIN -->
-          <div th:if="${param.retry}" class="alert alert-danger">
+          <div th:if="${param.error}" class="alert alert-danger">
             Invalid username or password.
           </div>
           <!---------------------------------------------------------->
@@ -31,7 +31,7 @@
           <!---------------------------------------------------------->
           <form th:action="@{/users}" th:object="${user}" method="post">
             <div>
-              <label>Email </label>
+              <label for="email" > Email Address </label>
               <input type="text" th:field="*{email}" class="text-input" />
             </div>
             <div>
@@ -78,12 +78,16 @@
       <div id="right">
         <div id="showcase">
           <div class="showcase-content">
+            <div class="wrapper">
+
             <iframe
-              width="800"
-              height="800"
+              width="1200"
+              height="1200"
               src="https://www.youtube.com/embed/U3-iXA6H3Q0?autoplay=1"
+              frameborder = "0"
             >
             </iframe>
+          </div>
           </div>
         </div>
       </div>
