@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/styleInterface.css" />
     <link rel="icon" href="/img/mondo_logo2.png" />
     
     <!-- Bootstrap for password visibility icon -->
@@ -20,7 +20,6 @@
         <div id="signin">
           <div class="logo">
             <img src="/img/mondo_logo2.png" alt="logo" />
-            <!-- <h1>MONDO</h1> -->
           </div>
           <!-- DISPLAY WHEN YOU ARE NOT SIGNED UP OR IN DATABASE AND CAN'T LOGIN -->
           <div th:if="${param.error}" class="alert alert-danger">
@@ -32,18 +31,23 @@
           <form th:action="@{/users}" th:object="${user}" method="post">
             <div>
               <label for="email" > Email Address </label>
-              <input type="text" th:field="*{email}" class="text-input" />
+              <input type="email" id="email" class="text-input" />
             </div>
             <div>
-              <label>Username</label>
-              <input type="text" th:field="*{username}" class="text-input" />
+              <label for="username">Username</label>
+              <input 
+              type="text" 
+              id="username"
+              name="username" 
+              class="text-input" 
+              />
             </div>
+
             <div>
               <label for="password">Password</label>
               <input
                 type="password"
                 id="password"
-                th:field="*{password}"
                 name="password"
                 class="text-input"
                 required
@@ -68,7 +72,7 @@
           </div>
             <a href="/login" class="secondary-btn">Log In</a>
           </div>
-          <footer id="main-footer">
+          <footer id="main-footer-signup">
             <p>Copyright &copy; 2022, All Rights Reserved</p>
             <div>
               <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
@@ -79,14 +83,13 @@
         <div id="showcase">
           <div class="showcase-content">
             <div class="wrapper">
-
-            <iframe
-              width="1200"
-              height="1200"
-              src="https://www.youtube.com/embed/U3-iXA6H3Q0?autoplay=1"
-              frameborder = "0"
-            >
+              <div class="frame-container">
+              <iframe
+                src="https://www.youtube.com/embed/U3-iXA6H3Q0?start=17&autoplay=1&loop=1&mute=1&modestbranding=1&controls=0&autohide=1&vq=2160&playlist=U3-iXA6H3Q0"
+                frameborder = "0"
+              >
             </iframe>
+            </div>
           </div>
           </div>
         </div>
