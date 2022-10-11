@@ -112,13 +112,8 @@ public class MoviesController {
         TmdbMovies movies = new TmdbApi("d84f9365179dc98dc69ab22833381835").getMovies();
         MovieDb movie = movies.getMovie(550, "en", MovieMethod.credits, MovieMethod.images, MovieMethod.videos);
         
-        // System.out.println(movie.getVideos().get(0).getKey());
-        // System.out.println(movie.getReleaseDate());
-        // System.out.println(movie.getCredits().getCast());
-        // System.out.println(movies.getPopularMovies("en", 1));
         List<MovieDb> top20 = movies.getPopularMovies("en", 1).getResults();
-        List<Integer> top20id = top20.stream()
-        .map(x -> x.getId()).collect(Collectors.toList());
+        List<Integer> top20id = top20.stream().map(x -> x.getId()).collect(Collectors.toList());
     
         // System.out.println(top20id);
 
