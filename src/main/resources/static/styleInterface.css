@@ -54,6 +54,7 @@ h6 {
 }
 #signin .logo img {
   width: 200px;  
+  opacity: 0.5;
 }
 #signin label {
   font-size: 0.9rem;
