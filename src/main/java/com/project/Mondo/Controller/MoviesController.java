@@ -21,6 +21,8 @@ import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.Video.Results;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -46,6 +48,26 @@ public class MoviesController {
         TmdbMovies movies = new TmdbApi("d84f9365179dc98dc69ab22833381835").getMovies();
         MovieDb movie = movies.getMovie(id, "en", MovieMethod.credits, MovieMethod.images, MovieMethod.videos);
         return movie.getVideos().get(0).getKey();
+    }
+
+    private List<MovieDb> getMoviesWithVideo(List<MovieDb> initList, TmdbMovies movies) {
+      List<MovieDb> withVideo = new ArrayList<>();
+      List<Integer> movieids = initList.stream().map(x -> x.getId()).collect(Collectors.toList());
+      for (int i = 0; i < movieids.size(); i++) {
+        withVideo = movieids.stream()
+            .map(x -> movies.getMovie(x, "en-US", MovieMethod.images, MovieMethod.videos))
+            .collect(Collectors.toList());
+      }
+  
+      for (MovieDb movie : withVideo) {
+  
+        Results empty = new Results();
+        if (movie.getVideos() == null) {
+          movie.setVideos(empty);
+          movie.getVideos().get(0).setKey("dasdasa");
+        }
+      }
+      return withVideo;
     }
 
     // This is a route which has a GET method which points to the "/movies" path
@@ -202,6 +224,20 @@ public class MoviesController {
     
         return "movies/signedHomePage";
       }
+
+      @GetMapping("/mostPopular")
+      public String getMostPopularMovies(Model model) {
+
+      TmdbMovies movies = new TmdbApi("d84f9365179dc98dc69ab22833381835").getMovies();
+      List<MovieDb> mostPopular = movies.getPopularMovies("en-US", 1).getResults();
+      mostPopular = this.getMoviesWithVideo(mostPopular, movies);
+
+      model.addAttribute("movies", mostPopular);
+      model.addAttribute("formObj", new FormObj());
+
+      return "pages/mostPopular";
+      }
+
     
 
     @GetMapping("/test")
