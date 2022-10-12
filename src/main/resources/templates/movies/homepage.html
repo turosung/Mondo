@@ -18,7 +18,7 @@
     crossorigin="anonymous"
     />
     <title>Mondo</title>
-    <link rel="icon" href="/img/mondo_logo2.png">
+    <link rel="icon" href="/img/mondo_logo.png">
     <link rel="stylesheet" href="/movies.css" />
     <link rel="stylesheet" href="/homepage.css">
 </head>
@@ -27,9 +27,30 @@
   <!--           NAVBAR WITH SEARCH BAR                 -->
   <!-- ------------------------------------------------ -->
     <header>
-        <div class="head-block" >
-            <img class="mondo-logo" src="/img/mondo_logo2.png" alt="mondo_logo2">
-            <a href='#' class="header-button"><b><span class='buttons-logo'>&#9776</span> Menu</b></a>
+      <div class="head-block" >
+        <a href="/login">
+        <img class="mondo-logo" src="img/mondo_logo.png"  alt="error">
+        </a>
+        <div class="header-button">          
+          <div class="dropdown navitem">
+            <button class="dropbtn"><span class='burger-logo'>&#9776</span></button>
+              <div class="dropdown-content">
+                <form action="/login">
+                  <button class="navitem noselect neon-button blue">IN THEATRES</button>
+                </form>
+                <form action="/login">
+                  <button class="navitem noselect neon-button blue">FUTURE MOVIES</button>   
+                </form>
+                <form action="/login">
+                  <button class="navitem noselect neon-button blue">MOST POPULAR</button>
+                </form>
+                <form action="/login">
+                  <button class="navitem noselect neon-button blue">TOP RATED</button>
+                </form>                   
+              </div>
+          </div>
+      </div> 
+        <div class="input-field" >
             <div class="input-field">
                 <select id="search-imdb-select">
                     <option value='all'>All <span>&#9662</span></option>
